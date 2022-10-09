@@ -84,7 +84,7 @@ public class Core
     }
 
     /// <summary>
-    /// Sorts elements of the sequence in ascending order and has computational complexity = Θ(n*ln(n))
+    /// Sorts elements of the sequence in ascending order and has computational complexity = Θ(n*log(n))
     /// </summary>
     /// <param name="sequnce">Source sequence</param>
     /// <returns>Sorted sequence</returns>
@@ -94,7 +94,7 @@ public class Core
     }
 
     /// <summary>
-    /// Sorts elements of the sequence in ascending order and has computational complexity = Θ(n*ln(n))
+    /// Sorts elements of the sequence in ascending order and has computational complexity = Θ(n*log(n))
     /// </summary>
     /// <param name="sequnce">Source sequence</param>
     /// <returns>Sorted sequence</returns>
