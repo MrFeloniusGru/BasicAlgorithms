@@ -14,7 +14,7 @@ public class Core
     /// <param name="comparer">Compares two objects of T type for equivalence</param>
     /// <param name="sortOrder">Specifies sorting order</param>
     /// <returns></returns>
-    protected T[] Merge<T>(T[] sequence, int leftIndex, int middleIndex, int rightIndex, IComparer<T> comparer, SortOrder sortOrder)
+    protected IList<T> Merge<T>(IList<T> sequence, int leftIndex, int middleIndex, int rightIndex, IComparer<T> comparer, SortOrder sortOrder)
     {
         var leftLenght = middleIndex - leftIndex + 1;
         var rightLenght = rightIndex - middleIndex;
@@ -52,22 +52,15 @@ public class Core
     /// <param name="sortOrder">Specifies sorting order</param>
     /// <returns></returns>
     /// <exception cref="ArgumentException"></exception>
-    private T[] MergeSort<T>(T[] sequnce, int left, int right,  IComparer<T> comparer, SortOrder sortOrder)
+    private IList<T> MergeSort<T>(IList<T> sequnce, int left, int right,  IComparer<T> comparer, SortOrder sortOrder)
     {
         if(left < right)
         {
-            var res = sequnce;
             var middle = (left + right) / 2;
 
-            var leftSeq = MergeSort(sequnce, left, middle, comparer, sortOrder);
-            //.Skip(left)
-            //.Take(middle+1);
+            MergeSort(sequnce, left, middle, comparer, sortOrder);
+            MergeSort(sequnce, middle + 1, right, comparer, sortOrder);
 
-            var rightSeq = MergeSort(sequnce, middle + 1, right, comparer, sortOrder);
-            //  .Skip(middle + 1)
-            //  .Take(right - middle);
-
-            //sequnce = (leftSeq.Concat(rightSeq).Concat(sequnce.Skip(leftSeq.Count() + rightSeq.Count()))).ToArray();
             return Merge(sequnce, left, middle, right, comparer, sortOrder);
         }
         else if (left > right)
@@ -90,7 +83,12 @@ public class Core
     /// <returns>Sorted sequence</returns>
     public IEnumerable<int> MergeSort(IEnumerable<int> sequnce)
     {
-        return MergeSort<int>(sequnce.ToArray(), 0, GetRightIndex(sequnce), Comparer<int>.Default, SortOrder.Asc);
+        if(sequnce == null)
+        {
+            throw new ArgumentNullException(nameof(sequnce));
+        }
+
+        return MergeSort(sequnce is IList<int> ? (IList<int>)sequnce : sequnce.ToArray(), 0, GetRightIndex(sequnce), Comparer<int>.Default, SortOrder.Asc);
     }
 
     /// <summary>
@@ -100,6 +98,11 @@ public class Core
     /// <returns>Sorted sequence</returns>
     public IEnumerable<int> MergeSortDesc(IEnumerable<int> sequnce)
     {
-        return MergeSort<int>(sequnce.ToArray(), 0, GetRightIndex(sequnce), Comparer<int>.Default, SortOrder.Desc);
+        if(sequnce == null)
+        {
+            throw new ArgumentNullException(nameof(sequnce));
+        }
+
+        return MergeSort(sequnce is IList<int> ? (IList<int>)sequnce : sequnce.ToArray(), 0, GetRightIndex(sequnce), Comparer<int>.Default, SortOrder.Desc);
     }
 }
