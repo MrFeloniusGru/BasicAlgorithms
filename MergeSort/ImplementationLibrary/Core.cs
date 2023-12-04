@@ -71,9 +71,14 @@ public class Core
         return sequnce;
     }
 
-    private int GetRightIndex<T>(IEnumerable<T> sequnce)
+    private int GetRightIndex<T>(IList<T> sequnce)
     {
-        return sequnce.Count() > 0 ? sequnce.Count() - 1 : 0;
+        return sequnce.Count > 0 ? sequnce.Count - 1 : 0;
+    }
+
+    private IList<T> GetIList<T>(IEnumerable<T> sequnce)
+    {
+        return sequnce is IList<T> ? (IList<T>)sequnce : sequnce.ToArray();
     }
 
     /// <summary>
@@ -88,7 +93,8 @@ public class Core
             throw new ArgumentNullException(nameof(sequnce));
         }
 
-        return MergeSort(sequnce is IList<int> ? (IList<int>)sequnce : sequnce.ToArray(), 0, GetRightIndex(sequnce), Comparer<int>.Default, SortOrder.Asc);
+        var list = GetIList(sequnce);
+        return MergeSort(list, 0, GetRightIndex(list), Comparer<int>.Default, SortOrder.Asc);
     }
 
     /// <summary>
@@ -103,6 +109,7 @@ public class Core
             throw new ArgumentNullException(nameof(sequnce));
         }
 
-        return MergeSort(sequnce is IList<int> ? (IList<int>)sequnce : sequnce.ToArray(), 0, GetRightIndex(sequnce), Comparer<int>.Default, SortOrder.Desc);
+        var list = GetIList(sequnce);
+        return MergeSort(list, 0, GetRightIndex(list), Comparer<int>.Default, SortOrder.Desc);
     }
 }
