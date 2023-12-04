@@ -32,6 +32,7 @@ public class Core
             }
             else if (rightLenght - j > 0)
             {
+                
                 sequence[k] = rightSubseq[j];
                 j++;
             }
@@ -76,10 +77,6 @@ public class Core
         return sequnce.Count > 0 ? sequnce.Count - 1 : 0;
     }
 
-    private IList<T> GetIList<T>(IEnumerable<T> sequnce)
-    {
-        return sequnce is IList<T> ? (IList<T>)sequnce : sequnce.ToArray();
-    }
 
     /// <summary>
     /// Sorts elements of the sequence in ascending order and has computational complexity = Θ(n*log(n))
@@ -92,9 +89,9 @@ public class Core
         {
             throw new ArgumentNullException(nameof(sequnce));
         }
-
-        var list = GetIList(sequnce);
-        return MergeSort(list, 0, GetRightIndex(list), Comparer<int>.Default, SortOrder.Asc);
+        // clone sequence
+        var array = sequnce.ToArray();
+        return MergeSort(array, 0, GetRightIndex(array), Comparer<int>.Default, SortOrder.Asc);
     }
 
     /// <summary>
@@ -108,8 +105,8 @@ public class Core
         {
             throw new ArgumentNullException(nameof(sequnce));
         }
-
-        var list = GetIList(sequnce);
-        return MergeSort(list, 0, GetRightIndex(list), Comparer<int>.Default, SortOrder.Desc);
+        // clone sequence
+        var array = sequnce.ToArray();
+        return MergeSort(array, 0, GetRightIndex(array), Comparer<int>.Default, SortOrder.Desc);
     }
 }
