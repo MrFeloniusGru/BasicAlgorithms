@@ -14,14 +14,14 @@ public class Core
     /// <param name="comparer">Compares two objects of T type for equivalence</param>
     /// <param name="sortOrder">Specifies sorting order</param>
     /// <returns></returns>
-    protected IList<T> Merge<T>(IList<T> sequence, int leftIndex, int middleIndex, int rightIndex, IComparer<T> comparer, SortOrder sortOrder)
+    protected T[] Merge<T>(T[] sequence, int leftIndex, int middleIndex, int rightIndex, IComparer<T> comparer, SortOrder sortOrder)
     {
         var leftLenght = middleIndex - leftIndex + 1;
         var rightLenght = rightIndex - middleIndex;
 
         var leftSubseq = sequence.Skip(leftIndex).Take(leftLenght).ToArray();
         var rightSubseq = leftLenght > 0 ? sequence.Skip(middleIndex + 1).Take(rightLenght).ToArray() : new T[0];
-
+ 
         int i = 0, j = 0;       
         for(int k = leftIndex; k <= rightIndex; k++)
         {
@@ -32,7 +32,7 @@ public class Core
             }
             else if (rightLenght - j > 0)
             {
-                
+
                 sequence[k] = rightSubseq[j];
                 j++;
             }
@@ -53,7 +53,7 @@ public class Core
     /// <param name="sortOrder">Specifies sorting order</param>
     /// <returns></returns>
     /// <exception cref="ArgumentException"></exception>
-    private IList<T> MergeSort<T>(IList<T> sequnce, int left, int right,  IComparer<T> comparer, SortOrder sortOrder)
+    private T[] MergeSort<T>(T[] sequnce, int left, int right,  IComparer<T> comparer, SortOrder sortOrder)
     {
         if(left < right)
         {
@@ -72,9 +72,9 @@ public class Core
         return sequnce;
     }
 
-    private int GetRightIndex<T>(IList<T> sequnce)
+    private int GetRightIndex<T>(T[] sequnce)
     {
-        return sequnce.Count > 0 ? sequnce.Count - 1 : 0;
+        return sequnce.Length > 0 ? sequnce.Length - 1 : 0;
     }
 
 
