@@ -25,14 +25,14 @@ public class Core
         int i = 0, j = 0;       
         for(int k = leftIndex; k <= rightIndex; k++)
         {
-            if(leftLenght - i > 0 && (rightLenght - j == 0 || comparer.Compare(leftSubseq.ElementAt(i), rightSubseq.ElementAt(j)) * (int)sortOrder <= 0))
+            if(leftLenght - i > 0 && (rightLenght - j == 0 || comparer.Compare(leftSubseq[i], rightSubseq[j]) * (int)sortOrder <= 0))
             {
-                sequence[k] = leftSubseq.ElementAt(i);
+                sequence[k] = leftSubseq[i];
                 i++;
             }
             else if (rightLenght - j > 0)
             {
-                sequence[k] = rightSubseq.ElementAt(j);
+                sequence[k] = rightSubseq[j];
                 j++;
             }
         }
