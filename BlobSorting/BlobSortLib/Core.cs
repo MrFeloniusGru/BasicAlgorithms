@@ -1,4 +1,4 @@
-﻿namespace BlobSortingLib;
+﻿namespace BlobSortLib;
 public class Core
 {
     private T[] BlobSort<T>(T[] sequnce, Comparer<T> comparer)

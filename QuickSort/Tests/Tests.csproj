@@ -19,8 +19,7 @@
     </PackageReference>
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\BlobSortLib\BlobSortLib.csproj" />
+    <ItemGroup>
+    <ProjectReference Include="..\QuickSortLib\QuickSortLib.csproj" />
   </ItemGroup>
-
 </Project>
