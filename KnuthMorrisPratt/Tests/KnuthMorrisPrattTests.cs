@@ -25,7 +25,7 @@ namespace Tests {
             
             var subStringPositions = finder.Failure("s");
 
-            Assert.Equal(subStringPositions, new int[] { 0 }); 
+            Assert.Equal(new int[] { 0 }, subStringPositions); 
         }
 
         [Fact]
@@ -35,7 +35,7 @@ namespace Tests {
             
             var subStringPositions = finder.Failure("ss");
 
-            Assert.Equal(subStringPositions, new int[] { 0, 1 }); 
+            Assert.Equal(new int[] { 0, 1 }, subStringPositions); 
         }
 
         [Fact]
@@ -43,9 +43,9 @@ namespace Tests {
         {
             KnuthMorrisPrattTests finder = new KnuthMorrisPrattTests();
             
-            var subStringPositions = finder.Failure("sass");
+            var subStringPositions = finder.Failure("sassass");
 
-            Assert.Equal(subStringPositions, new int[] { 0, 0, 1, 1 }); 
+            Assert.Equal(new int[] { 0, 0, 1, 1, 2, 3, 4 }, subStringPositions); 
         }
 
         [Fact]
@@ -55,7 +55,7 @@ namespace Tests {
             
             var indexes = finder.IndexesOf("abababa", "aba");
 
-            Assert.Equal(indexes, new int[]{0, 2, 4}); 
+            Assert.Equal(new int[]{0, 2, 4}, indexes); 
         }
 
         [Fact]
@@ -65,7 +65,7 @@ namespace Tests {
             
             var indexes = finder.IndexesOf("aabaab", "aa");
 
-            Assert.Equal(indexes, new int[]{0, 3}); 
+            Assert.Equal(new int[]{0, 3}, indexes); 
         }
 
 
@@ -77,7 +77,7 @@ namespace Tests {
             
             var indexes = finder.IndexesOf("мокмолооломко моло молооко молоко", "молоко");
 
-            Assert.Equal(indexes, new int[]{27}); 
+            Assert.Equal(new int[]{27}, indexes); 
         }
     }
 }
