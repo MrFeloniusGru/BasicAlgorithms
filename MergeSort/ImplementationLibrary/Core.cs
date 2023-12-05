@@ -90,8 +90,8 @@ public class Core
             throw new ArgumentNullException(nameof(sequnce));
         }
         // clone sequence
-        var array = sequnce.ToArray();
-        return MergeSort(array, 0, GetRightIndex(array), Comparer<int>.Default, SortOrder.Asc);
+        var sequnceCopy = sequnce.ToArray();
+        return MergeSort(sequnceCopy, 0, GetRightIndex(sequnceCopy), Comparer<int>.Default, SortOrder.Asc);
     }
 
     /// <summary>
@@ -106,7 +106,7 @@ public class Core
             throw new ArgumentNullException(nameof(sequnce));
         }
         // clone sequence
-        var array = sequnce.ToArray();
-        return MergeSort(array, 0, GetRightIndex(array), Comparer<int>.Default, SortOrder.Desc);
+        var sequnceCopy = sequnce.ToArray();
+        return MergeSort(sequnceCopy, 0, GetRightIndex(sequnceCopy), Comparer<int>.Default, SortOrder.Desc);
     }
 }

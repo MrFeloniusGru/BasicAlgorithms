@@ -14,7 +14,7 @@ public class MergeSortTests
     public void SortArrayShouldBeCorrect(int[] data)
     {
         var core = new Core();
-        Assert.Equal(core.MergeSort(data), data.OrderBy(x => x));
+        Assert.Equal(data.OrderBy(x => x), core.MergeSort(data));
     }
 
     [Theory]
@@ -27,6 +27,6 @@ public class MergeSortTests
     public void DescSortArrayShouldBeCorrect(int[] data)
     {
         var core = new Core();
-        Assert.Equal(core.MergeSortDesc(data), data.OrderByDescending(x => x));
+        Assert.Equal(data.OrderByDescending(x => x), core.MergeSortDesc(data));
     }
 }
