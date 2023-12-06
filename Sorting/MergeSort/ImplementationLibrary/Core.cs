@@ -53,60 +53,60 @@ public class Core
     /// <param name="sortOrder">Specifies sorting order</param>
     /// <returns></returns>
     /// <exception cref="ArgumentException"></exception>
-    private T[] MergeSort<T>(T[] sequnce, int left, int right,  IComparer<T> comparer, SortOrder sortOrder)
+    private T[] MergeSort<T>(T[] sequence, int left, int right,  IComparer<T> comparer, SortOrder sortOrder)
     {
         if(left < right)
         {
             var middle = (left + right) / 2;
 
-            MergeSort(sequnce, left, middle, comparer, sortOrder);
-            MergeSort(sequnce, middle + 1, right, comparer, sortOrder);
+            MergeSort(sequence, left, middle, comparer, sortOrder);
+            MergeSort(sequence, middle + 1, right, comparer, sortOrder);
 
-            return Merge(sequnce, left, middle, right, comparer, sortOrder);
+            return Merge(sequence, left, middle, right, comparer, sortOrder);
         }
         else if (left > right)
         {
             throw new ArgumentException($"{nameof(left)} should be less then {nameof(right)}");
         }
 
-        return sequnce;
+        return sequence;
     }
 
-    private int GetRightIndex<T>(T[] sequnce)
+    private int GetRightIndex<T>(T[] sequence)
     {
-        return sequnce.Length > 0 ? sequnce.Length - 1 : 0;
+        return sequence.Length > 0 ? sequence.Length - 1 : 0;
     }
 
 
     /// <summary>
     /// Sorts elements of the sequence in ascending order and has computational complexity = Θ(n*log(n))
     /// </summary>
-    /// <param name="sequnce">Source sequence</param>
+    /// <param name="sequence">Source sequence</param>
     /// <returns>Sorted sequence</returns>
-    public IEnumerable<int> MergeSort(IEnumerable<int> sequnce)
+    public IEnumerable<int> MergeSort(IEnumerable<int> sequence)
     {
-        if(sequnce == null)
+        if(sequence == null)
         {
-            throw new ArgumentNullException(nameof(sequnce));
+            throw new ArgumentNullException(nameof(sequence));
         }
         // clone sequence
-        var sequnceCopy = sequnce.ToArray();
-        return MergeSort(sequnceCopy, 0, GetRightIndex(sequnceCopy), Comparer<int>.Default, SortOrder.Asc);
+        var sequenceCopy = sequence.ToArray();
+        return MergeSort(sequenceCopy, 0, GetRightIndex(sequenceCopy), Comparer<int>.Default, SortOrder.Asc);
     }
 
     /// <summary>
     /// Sorts elements of the sequence in ascending order and has computational complexity = Θ(n*log(n))
     /// </summary>
-    /// <param name="sequnce">Source sequence</param>
+    /// <param name="sequence">Source sequence</param>
     /// <returns>Sorted sequence</returns>
-    public IEnumerable<int> MergeSortDesc(IEnumerable<int> sequnce)
+    public IEnumerable<int> MergeSortDesc(IEnumerable<int> sequence)
     {
-        if(sequnce == null)
+        if(sequence == null)
         {
-            throw new ArgumentNullException(nameof(sequnce));
+            throw new ArgumentNullException(nameof(sequence));
         }
         // clone sequence
-        var sequnceCopy = sequnce.ToArray();
-        return MergeSort(sequnceCopy, 0, GetRightIndex(sequnceCopy), Comparer<int>.Default, SortOrder.Desc);
+        var sequenceCopy = sequence.ToArray();
+        return MergeSort(sequenceCopy, 0, GetRightIndex(sequenceCopy), Comparer<int>.Default, SortOrder.Desc);
     }
 }
