@@ -1,8 +1,8 @@
 ﻿namespace Tests;
 using Xunit;
-using QuickSortLib;
+using HeapSortLib;
 
-public class QuickSortTests
+public class HeapSortTests
 {
     [Theory]
     [InlineData(new int[] { 3, 2, 1 })]
@@ -16,6 +16,6 @@ public class QuickSortTests
     public void SortArrayShouldBeCorrect(int[] data)
     {
         var core = new Core();
-        Assert.Equal(data.OrderBy(x => x), core.QuickSort(data));
+        Assert.Equal(data.OrderBy(x => x), core.HeapSort(data));
     }
 }
