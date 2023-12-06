@@ -63,7 +63,7 @@ public class Core
         return heap;
     }
 
-    // O(n * Lg(n)) +
+    // O(n * Lg(n))
     private void HeapSort(int[] sequence)
     {
         var heap = BuildMaxHeap(sequence);
