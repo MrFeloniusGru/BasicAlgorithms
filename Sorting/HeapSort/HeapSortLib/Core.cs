@@ -30,7 +30,7 @@ public class Core
         return (idx * 2) + 2;
     }
 
-    // O(lg(n)) или O(h), где h - высота поддерева с корнем в idx
+    // O(lg2(n)) или O(h), где h - высота поддерева с корнем в idx
     private void MaxHeapify(Heap heap, int idx)
     {
         var l = Left(idx);
