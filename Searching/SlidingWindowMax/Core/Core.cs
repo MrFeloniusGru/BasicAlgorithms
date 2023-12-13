@@ -12,6 +12,7 @@ public class Core<T>
         _comparer = comparer ?? throw new ArgumentNullException(nameof(comparer));
     }
 
+    // O(n)
     public T?[]? Max(T[] numbers, int windowLenght)
     {
         if(numbers == null)
@@ -20,7 +21,7 @@ public class Core<T>
         }
 
         if(windowLenght == 1){
-            return numbers.ToArray();
+            return numbers;
         }
 
         if(windowLenght >= numbers.Length)
@@ -28,8 +29,8 @@ public class Core<T>
             return new[] { numbers.Max(_comparer) };
         }
 
+        // RemoveFirst, RemoveLast, AddLast, Last, First - O(1)
         var window = new LinkedList<int>();
-
 
         var res = new T[numbers.Length - windowLenght + 1];
         for (int i = 0; i < numbers.Length; i++)
