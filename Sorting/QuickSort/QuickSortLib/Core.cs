@@ -31,6 +31,7 @@ public class Core
         }   
     }
 
+    // O(nlg2(n))
     public IEnumerable<int> QuickSort(IEnumerable<int> sequence)
     {
         var sequenceCopy = sequence.ToArray();

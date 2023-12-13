@@ -63,7 +63,7 @@ public class Core
         return heap;
     }
 
-    // O(n * Lg(n))
+    // O(n * lg2(n))
     private void HeapSort(int[] sequence)
     {
         var heap = BuildMaxHeap(sequence);
@@ -76,6 +76,7 @@ public class Core
         }
     }
 
+    // O(n * lg2(n))
     public int[] HeapSort(IEnumerable<int> sequence)
     {
         var sequenceCopy = sequence.ToArray();
